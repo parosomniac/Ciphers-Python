@@ -21,7 +21,6 @@ def atbashEncode(message):
             res += l
     return res
 
-
 def caesarEncode(message):
     pass
 def caesarDecode(message):
