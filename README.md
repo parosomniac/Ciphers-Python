@@ -11,7 +11,10 @@
 ## Affine Cipher
 * A substitution cipher where each letter is mapped to its numeric equivalent, encrypted using a mathematical function and then turned back into a letter
 
+
 * E(x) = (ax + b) mod m
+* m = 26, the length of the alphabet
+* Verify that the value chosen for a is coprime to m 
 
 ## Viginere Cipher
 * A cipher that encodes text using a Caesar cipher based on a key

@@ -83,6 +83,7 @@ def caesarDecode(message):
         except:
             print("Shift must be an integer greater than 0.")
 
+# no common factors other than 1
 def isCoprime(num):
     factors_26 = set([2, 13, 26]) # 1 is a factor of every number, so removed
     factors = set([num]) # the number itself is always a factor
@@ -107,7 +108,30 @@ def affineEncode(message):
 
     # a = slope, must be coprime to the size of the alphabet
     # b = intercept
-    pass
+    a = -1
+    b = -1
+    while not (a >= 1):
+        try:
+            a = int(input("a: Input a positive integer that is coprime to 26. "))
+
+            while not(b >= 1):
+                try:
+                    b = int(input("b: Input an intercept value to help encode the message. "))
+
+                    encryptedMsg = ""
+                    for c in message:
+                        if c.isalpha():
+                            num = letters_nums_mapping[c]
+                            num = (a * num + b) % m 
+                            c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(c)])
+                            encryptedMsg += c
+                            # if letter was uppercase
+                except:
+                    print("The number must be a positive integer. ")
+        except:
+            print("The number must not have any common factors with 26 other than 1. ")
+    return encryptedMsg
+
 
 def affineDecode(message):
     pass
@@ -117,3 +141,5 @@ def viginereEncode(message):
 def viginereDecode(message):
     pass
 
+
+print(isCoprime(1))
