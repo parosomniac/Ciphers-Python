@@ -15,8 +15,9 @@ def atbashEncode(message):
         if l.isalpha():
             if l.islower():
                 res += letter_mapping[l]
-            # if the letter is capitalized, match uncapitalized then capitalize
-            res += letter_mapping[l.lower()].upper()
+            else:
+                # if the letter is capitalized, match uncapitalized then capitalize
+                res += letter_mapping[l.lower()].upper()
         else:
             res += l
     return res
