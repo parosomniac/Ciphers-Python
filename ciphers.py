@@ -52,7 +52,34 @@ def caesarEncode(message):
             print("Shift must be an integer greater than 0.")
 
 def caesarDecode(message):
-    pass
+    shift = 0
+    while not (shift > 0):
+        try:
+            shift = int(input("How much is the shift for the cipher? "))
+            shift %= 26
+            decryptedMsg = ''
+
+
+            for c in message:
+                if c.isalpha() and c.islower():
+                    ascii_num = ord(c)
+                    ascii_num -= shift
+                    if (ascii_num < 97):
+                        ascii_num = 122 - 97 % ascii_num + 1
+                    c = chr(ascii_num)
+                    decryptedMsg += c
+                elif c.isalpha() and c.isupper():
+                    ascii_num = ord(c)
+                    ascii_num -= shift
+                    if (ascii_num < 65):
+                        ascii_num = 90 - 65 % ascii_num + 1
+                    c = chr(ascii_num)
+                    decryptedMsg += c
+                else:
+                    decryptedMsg += c
+            return decryptedMsg
+        except:
+            print("Shift must be an integer greater than 0.")
 
 def affineEncode(message):
     pass
