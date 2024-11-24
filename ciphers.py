@@ -28,32 +28,27 @@ def caesarEncode(message):
             shift = int(input("How much is the shift for the cipher?"))
         except:
             print("Shift must be an integer greater than 0.")
-    
     shift %= 26
     encryptedMsg = ''
-    for c in message:
-        # space, punctuation, digits
-        if not c.isalpha():
-            encryptedMsg += c
-        else:
-            # lowercase letter
-            if c.isalpha():
-                if c.islower():
-                    ascii_num = int(c)
-                    ascii_num += shift
-                    if (ascii_num > 122):
-                        ascii_num = ascii_num % 122 + 97 - 1
-                    c = chr(ascii_num)
-                    encryptedMsg += c
-                # uppercase letter
-                else:
-                    ascii_num = int(c)
-                    ascii_num += shift
-                    if (ascii_num > 90):
-                        ascii_num = ascii_num % 90 + 65 - 1
-                    c = chr(ascii_num)
-                    encryptedMsg += c
 
+    for c in message:
+        if c.isalpha():
+            ascii_num = int(c)
+            ascii_num += shift
+            if (ascii_num > 122):
+                ascii_num = ascii_num % 122 + 97 - 1
+            c = chr(ascii_num)
+            encryptedMsg += c
+        elif c.isalpha() and c.isupper():
+            ascii_num = int(c)
+            ascii_num += shift
+            if (ascii_num > 90):
+                ascii_num = ascii_num % 90 + 65 - 1
+            c = chr(ascii_num)
+            encryptedMsg += c
+        # space, punctuation, digits
+        else:
+            encryptedMsg += c
     return encryptedMsg
 
 def caesarDecode(message):

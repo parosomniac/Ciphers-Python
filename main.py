@@ -13,7 +13,7 @@ def switch_mode():
     user_input = -1
     while not (user_input == '1' or user_input == '2'):
         user_input = input("Would you like to encode(1) " + 
-                           "or decode(2) a message?")
+                           "or decode(2) a message? ")
     return int(user_input)
         
 def switch_menu(user_input):
