@@ -17,22 +17,25 @@ def switch_mode():
     return int(user_input)
         
 def switch_menu(user_input):
-
+    if user_input == -1:
+        return
+    mode = switch_mode()
+    message = input("Enter your message.")
     # Atbash cipher
     if user_input == 1:
-        mode = switch_mode()
         # Atbash encode message
         if mode == 1:
-            message = input("Enter a message to encode.")
             print(ciphers.atbashEncode(message))
         # Atbash decode message
         else:
-            message = input("Enter a message to decode.")
             print(ciphers.atbashEncode(message))
 
     # Caesar cipher
     elif user_input == 2:
-        pass
+        if mode == 1:
+            print(ciphers.caesarEncode(message))
+        else:
+            print(ciphers.caesarDecode(message))
     # Affine cipher
     elif user_input == 3:
         pass
@@ -41,7 +44,6 @@ def switch_menu(user_input):
     elif user_input == 4:
         pass
     
-
 def main():
     user_input = 0
     # print menu options
