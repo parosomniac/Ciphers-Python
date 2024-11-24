@@ -11,5 +11,7 @@
 ## Affine Cipher
 * A substitution cipher where each letter is mapped to its numeric equivalent, encrypted using a mathematical function and then turned back into a letter
 
+* E(x) = (ax + b) mod m
+
 ## Viginere Cipher
 * A cipher that encodes text using a Caesar cipher based on a key

@@ -29,7 +29,6 @@ def switch_menu(user_input):
         # Atbash decode message
         else:
             print(ciphers.atbashEncode(message))
-
     # Caesar cipher
     elif user_input == 2:
         if mode == 1:
@@ -42,7 +41,6 @@ def switch_menu(user_input):
             print(ciphers.affineEncode(message))
         else:
             print(ciphers.affineDecode(message))
-
     # Viginere cipher
     elif user_input == 4:
         if mode == 1:
@@ -65,7 +63,7 @@ def main():
             
             # switch user_input
             switch_menu(user_input)
-        # except catch if not an int
+        # except to catch if not an int
         except:
             print('Please enter an integer from the menu options given.')
 
