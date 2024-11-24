@@ -38,11 +38,17 @@ def switch_menu(user_input):
             print(ciphers.caesarDecode(message))
     # Affine cipher
     elif user_input == 3:
-        pass
+        if mode == 1:
+            print(ciphers.affineEncode(message))
+        else:
+            print(ciphers.affineDecode(message))
 
     # Viginere cipher
     elif user_input == 4:
-        pass
+        if mode == 1:
+            print(ciphers.viginereEncode(message))
+        else:
+            print(ciphers.viginereDecode(message))
     
 def main():
     user_input = 0
