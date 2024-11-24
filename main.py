@@ -27,7 +27,8 @@ def switch_menu(user_input):
             print(ciphers.atbashEncode(message))
         # Atbash decode message
         else:
-            pass
+            message = input("Enter a message to decode.")
+            print(ciphers.atbashEncode(message))
 
     # Caesar cipher
     elif user_input == 2:

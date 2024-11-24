@@ -1,6 +1,5 @@
 # file containing all of the ciphers
 
-
 def atbashEncode(message):
     res = ''
     letter_mapping = {'a': 'z', 'b': 'y', 'c':'x', 'd':'w',
@@ -22,8 +21,6 @@ def atbashEncode(message):
             res += l
     return res
 
-def atbashDecode(message):
-    pass
 
 def caesarEncode(message):
     pass
