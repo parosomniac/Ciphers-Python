@@ -200,6 +200,3 @@ def viginereEncode(message):
     pass
 def viginereDecode(message):
     pass
-
-
-print(affineDecode('DkMM'))
