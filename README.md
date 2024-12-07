@@ -21,3 +21,7 @@
 
 ## Viginere Cipher
 * A cipher that encodes text using a Caesar cipher based on a key
+
+
+## TODO
+fix all ciphers to work with spaces and punctuation
