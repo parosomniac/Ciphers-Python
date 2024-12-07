@@ -21,7 +21,8 @@
 
 ## Viginere Cipher
 * A cipher that encodes text using a Caesar cipher based on a key
-
+* E(x) = (x + k) mod 26
+* D(x) = (x - k) mod 26
 
 ## TODO
 fix all ciphers to work with spaces, uppercase and punctuation
