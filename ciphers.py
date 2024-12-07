@@ -122,6 +122,7 @@ def affineEncode(message):
                     b = int(input("b: Input an intercept value to help encode the message. "))
                     encryptedMsg = ""
                     for c in message:
+                        # if letter was uppercase
                         if c.isalpha():
                             num = letters_nums_mapping[c]
                             num = (a * num + b) % m 
@@ -129,7 +130,6 @@ def affineEncode(message):
                             c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
                             encryptedMsg += c
                             
-                            # if letter was uppercase
                 except:
                     print("The number must be a positive integer. ")
                     b = -1
