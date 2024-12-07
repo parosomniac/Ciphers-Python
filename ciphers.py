@@ -179,17 +179,14 @@ def affineDecode(message):
                                 c = c.lower()
                             # convert char to num
                             num = letters_nums_mapping[c]
-                            # TODO: fix this section
                             num = getModInverse(a, m) * (num - b) % m
-                            print(num)
-                            # get new encrypted character by looking up the letter associated with the new number
+
                             c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
                             if upper_c == True:
-                                decryptedMsgdMsg += c.upper()
+                                decryptedMsg += c.upper()
                                 upper_c = False
                             else:
-                                decryptedMsg += c
-                            
+                                decryptedMsg += c       
                 except:
                     print("The number must be a positive integer. ")
                     b = -1
