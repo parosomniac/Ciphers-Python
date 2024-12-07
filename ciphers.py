@@ -157,5 +157,5 @@ def viginereDecode(message):
     pass
 
 
-print(affineEncode("DOg")) # d:3 o:14 g:6
+# print(affineEncode("DOg")) # d:3 o:14 g:6
 # encrypted: d3  k10  m12   
