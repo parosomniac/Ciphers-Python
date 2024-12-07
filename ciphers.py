@@ -231,6 +231,3 @@ def viginereEncode(message):
 
 def viginereDecode(message):
     pass
-
-# TODO: 
-print(viginereEncode('dog'))
