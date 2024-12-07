@@ -24,7 +24,5 @@
 * E(x) = (x + k) mod 26
 * D(x) = (x - k) mod 26
 
-## TODO
-fix all ciphers to work with spaces, uppercase and punctuation
-
-- Viginere
+## FUTURE ADDITIONS
+* graphical user interface
