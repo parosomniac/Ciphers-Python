@@ -16,5 +16,8 @@
 * m = 26, the length of the alphabet
 * Verify that the value chosen for a is coprime to m 
 
+* D(x) = a^-1 (x - b) mod m 
+* a^ -1 = modular multiplicative inverse
+
 ## Viginere Cipher
 * A cipher that encodes text using a Caesar cipher based on a key

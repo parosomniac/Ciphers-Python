@@ -146,16 +146,58 @@ def affineEncode(message):
             a = -1
     return encryptedMsg
 
+def getModInverse(a, mod):
+    for i in range(1, mod):
+        if (((a % mod) * (i % mod)) % mod == 1):
+            return i
 
 def affineDecode(message):
     # retrieve a and b from user
-    pass
+    m = 26 # size of the alphabet
+
+    # a = slope, must be coprime to the size of the alphabet
+    # b = intercept
+    a = -1
+    b = -1
+    while not (a >= 1):
+        try:
+
+            a = int(input("a: Input a positive integer that is coprime to 26. "))
+            while not(isCoprime(a)):
+                a = int(input("'a' must be coprime to 26."))
+
+            while not(b >= 1):
+                try:
+                    b = int(input("b: Input an intercept value to help encode the message. "))
+                    encryptedMsg = ""
+                    upper_c = False
+                    for c in message:
+                        if c.isalpha():
+                            # if letter was uppercase
+                            if c.isupper():
+                                upper_c = True
+                                c = c.lower()
+                            num = letters_nums_mapping[c]
+                            num = (a * num + b) % m 
+                            # get new encrypted character by looking up the letter associated with the new number
+                            c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
+                            if upper_c == True:
+                                encryptedMsg += c.upper()
+                                upper_c = False
+                            else:
+                                encryptedMsg += c
+                            
+                except:
+                    print("The number must be a positive integer. ")
+                    b = -1
+        except:
+            print("The number must not have any common factors with 26 other than 1. ")
+            a = -1
+    return encryptedMsg
+
 
 def viginereEncode(message):
     pass
 def viginereDecode(message):
     pass
 
-
-# print(affineEncode("DOg")) # d:3 o:14 g:6
-# encrypted: d3  k10  m12   
