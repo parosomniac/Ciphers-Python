@@ -15,7 +15,7 @@ num = 3
 m = 26
 a = 3
 b = 20
-
+res = ""
 word = "DkMM" # -> DoGG 3 14 6 6 
 for c in word:
     if c.isupper():
@@ -24,6 +24,12 @@ for c in word:
     # convert char to num
     num = letters_nums_mapping[c]
     num = getModInverse(a, m) * (num - b) % m
+
+    c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
     print(num)
     if upper_c == True:
+        res += c.upper()
         upper_c = False
+    else:
+        res += c
+print(res)
