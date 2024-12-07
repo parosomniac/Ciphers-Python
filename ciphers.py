@@ -112,15 +112,18 @@ def affineEncode(message):
     b = -1
     while not (a >= 1):
         try:
+
             a = int(input("a: Input a positive integer that is coprime to 26. "))
+            while not(isCoprime(a)):
+                a = int(input("'a' must be coprime to 26."))
 
             while not(b >= 1):
                 try:
                     b = int(input("b: Input an intercept value to help encode the message. "))
-
                     encryptedMsg = ""
                     for c in message:
                         if c.isalpha():
+                            print(c)
                             num = letters_nums_mapping[c]
                             num = (a * num + b) % m 
                             c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(c)])
@@ -128,12 +131,15 @@ def affineEncode(message):
                             # if letter was uppercase
                 except:
                     print("The number must be a positive integer. ")
+                    b = -1
         except:
             print("The number must not have any common factors with 26 other than 1. ")
+            a = -1
     return encryptedMsg
 
 
 def affineDecode(message):
+    # retrieve a and b from user
     pass
 
 def viginereEncode(message):
@@ -142,4 +148,4 @@ def viginereDecode(message):
     pass
 
 
-print(isCoprime(1))
+affineEncode("dog")
