@@ -137,6 +137,8 @@ def affineEncode(message):
                                 upper_c = False
                             else:
                                 encryptedMsg += c
+                        else:
+                            encryptedMsg += c
                             
                 except:
                     print("The number must be a positive integer. ")
@@ -187,6 +189,8 @@ def affineDecode(message):
                                 upper_c = False
                             else:
                                 decryptedMsg += c       
+                        else:
+                            decryptedMsg += c
                 except:
                     print("The number must be a positive integer. ")
                     b = -1

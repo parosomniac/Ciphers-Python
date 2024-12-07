@@ -26,3 +26,5 @@
 
 ## TODO
 fix all ciphers to work with spaces, uppercase and punctuation
+
+- Viginere
