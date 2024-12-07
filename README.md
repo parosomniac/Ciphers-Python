@@ -24,4 +24,4 @@
 
 
 ## TODO
-fix all ciphers to work with spaces and punctuation
+fix all ciphers to work with spaces, uppercase and punctuation

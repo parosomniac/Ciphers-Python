@@ -197,6 +197,40 @@ def affineDecode(message):
 
 
 def viginereEncode(message):
-    pass
+    key = input("Input a key to encode the message. ")
+
+    encryptedMsg = ""
+    num = -1
+    c_ptr = 0
+    m = 26
+    upper_c = False
+
+    for c in message:
+        if c == " ":
+            encryptedMsg += c
+        else:
+            if c.isupper():
+                upper_c = True
+                c = c.lower()
+            # loop through the indices of the key
+            num = (letters_nums_mapping.get(c) + letters_nums_mapping.get(key[c_ptr])) % m
+            c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
+            # increment pointer
+            c_ptr += 1
+            # if ptr now greater than indices of key, reset
+            if c_ptr > len(key) - 1:
+                c_ptr = 0
+            if upper_c == True:
+                encryptedMsg += c.upper()
+                upper_c = False
+            else:
+                encryptedMsg += c       
+
+    return encryptedMsg
+
+
 def viginereDecode(message):
     pass
+
+# TODO: 
+print(viginereEncode('dog'))
