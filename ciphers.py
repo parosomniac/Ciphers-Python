@@ -210,9 +210,7 @@ def viginereEncode(message):
     upper_c = False
 
     for c in message:
-        if c == " ":
-            encryptedMsg += c
-        else:
+        if c.isalpha():
             if c.isupper():
                 upper_c = True
                 c = c.lower()
@@ -228,7 +226,9 @@ def viginereEncode(message):
                 encryptedMsg += c.upper()
                 upper_c = False
             else:
-                encryptedMsg += c       
+                encryptedMsg += c  
+        else:
+            encryptedMsg += c    
 
     return encryptedMsg
 
@@ -243,9 +243,7 @@ def viginereDecode(message):
     upper_c = False
 
     for c in message:
-        if c == " ":
-            decryptedMsg += c
-        else:
+        if c.isalpha():
             if c.isupper():
                 upper_c = True
                 c = c.lower()
@@ -262,6 +260,8 @@ def viginereDecode(message):
                 decryptedMsg += c.upper()
                 upper_c = False
             else:
-                decryptedMsg += c       
+                decryptedMsg += c  
+        else:
+            decryptedMsg += c     
     return decryptedMsg
 
