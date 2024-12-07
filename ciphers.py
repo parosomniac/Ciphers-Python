@@ -125,11 +125,10 @@ def affineEncode(message):
                         if c.isalpha():
                             num = letters_nums_mapping[c]
                             num = (a * num + b) % m 
-                            print(c)
-                            '''
-                            c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(c)])
+                            # get new encrypted character by looking up the letter associated with the new number
+                            c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
                             encryptedMsg += c
-                            '''
+                            
                             # if letter was uppercase
                 except:
                     print("The number must be a positive integer. ")
@@ -150,5 +149,5 @@ def viginereDecode(message):
     pass
 
 
-affineEncode("dog") # d:3 o:14 g:6
+print(affineEncode("dog")) # d:3 o:14 g:6
 # encrypted: d3  k10  m12   
