@@ -121,14 +121,22 @@ def affineEncode(message):
                 try:
                     b = int(input("b: Input an intercept value to help encode the message. "))
                     encryptedMsg = ""
+                    upper_c = False
                     for c in message:
-                        # if letter was uppercase
                         if c.isalpha():
+                            # if letter was uppercase
+                            if c.isupper():
+                                upper_c = True
+                                c = c.lower()
                             num = letters_nums_mapping[c]
                             num = (a * num + b) % m 
                             # get new encrypted character by looking up the letter associated with the new number
                             c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
-                            encryptedMsg += c
+                            if upper_c == True:
+                                encryptedMsg += c.upper()
+                                upper_c = False
+                            else:
+                                encryptedMsg += c
                             
                 except:
                     print("The number must be a positive integer. ")
@@ -149,5 +157,5 @@ def viginereDecode(message):
     pass
 
 
-print(affineEncode("dog")) # d:3 o:14 g:6
+print(affineEncode("DOg")) # d:3 o:14 g:6
 # encrypted: d3  k10  m12   
