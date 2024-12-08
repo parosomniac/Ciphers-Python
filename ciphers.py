@@ -281,3 +281,4 @@ def viginereDecode(message):
         else:
             decryptedMsg += c     
     return decryptedMsg
+
