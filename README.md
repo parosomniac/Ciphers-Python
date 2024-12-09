@@ -26,3 +26,4 @@
 
 ## FUTURE ADDITIONS
 * graphical user interface
+* refactor to reduce repetition of code
