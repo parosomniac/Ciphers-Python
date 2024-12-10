@@ -6,8 +6,8 @@ letters_nums_mapping = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4,
                         'p': 15, 'q': 16, 'r': 17, 's': 18, 't': 19,
                         'u': 20, 'v': 21, 'w': 22, 'x': 23, 'y': 24, 'z': 25}
 
-def atbashEncode(message):
-    res = ''
+def atbashEncodeDecode(message):
+    res = ""
     letter_mapping = {'a': 'z', 'b': 'y', 'c':'x', 'd':'w',
                       'e': 'v', 'f': 'u', 'g': 't', 'h': 's', 
                       'i': 'r', 'j': 'q', 'k': 'p', 'l': 'o', 
@@ -34,7 +34,7 @@ def caesarEncodeDecode(message, mode):
         try:
             shift = int(input("How much is the shift for the cipher? "))
             shift %= 26 
-            msg = ''
+            msg = ""
             for c in message:
                 if c.isalpha():
                     ascii_num = ord(c)
@@ -136,10 +136,9 @@ def getKey():
     return key
 
 
-def viginereEncode(message):
+def viginereEncodeDecode(message, mode):
     key = getKey()
-
-    encryptedMsg = ""
+    msg = ""
     num = -1
     c_ptr = 0
     m = 26
@@ -150,8 +149,11 @@ def viginereEncode(message):
             if c.isupper():
                 upper_c = True
                 c = c.lower()
-            # loop through indices of the key
-            num = (letters_nums_mapping.get(c) + letters_nums_mapping.get(key[c_ptr])) % m 
+            if mode == 1:
+                num = (letters_nums_mapping.get(c) + letters_nums_mapping.get(key[c_ptr])) % m 
+            elif mode == 2:
+                num = (letters_nums_mapping.get(c) - letters_nums_mapping.get(key[c_ptr])) % m
+                num = (num + m) % m
             c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
             c_ptr += 1
             # if ptr now greater than indices of key, reset
@@ -160,32 +162,5 @@ def viginereEncode(message):
             if upper_c == True:
                 c = c.upper()
                 upper_c = False
-        encryptedMsg += c
-    return encryptedMsg
-
-
-def viginereDecode(message):
-    key = getKey()
-
-    decryptedMsg = ""
-    num = -1
-    c_ptr = 0
-    m = 26
-    upper_c = False
-
-    for c in message:
-        if c.isalpha():
-            if c.isupper():
-                upper_c = True
-                c = c.lower()
-            num = (letters_nums_mapping.get(c) - letters_nums_mapping.get(key[c_ptr])) % m
-            num = (num + m) % m
-            c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
-            c_ptr += 1
-            if c_ptr > len(key) - 1:
-                c_ptr = 0
-            if upper_c == True:
-                c = c.upper()
-                upper_c = False
-        decryptedMsg += c
-    return decryptedMsg
+        msg += c
+    return msg
