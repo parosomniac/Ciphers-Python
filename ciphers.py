@@ -78,52 +78,10 @@ def isCoprime(num):
     return not set.intersection(factors, factors_26)
 
 
-def affineEncode(message):
-    # E(x) = (ax + b) mod m
-    m = 26 # size of the alphabet
-    a = - 1 # coprime to the alphabet
-    b = -1 # intercept
-
-    while not (a >= 1):
-        try:
-            a = int(input("a: Input a positive integer that is coprime to 26. "))
-            while not(isCoprime(a)):
-                a = int(input("'a' must be coprime to 26. "))
-            while not(b >= 1):
-                try:
-                    b = int(input("b: Input an intercept value to help encode the message. "))
-                    encryptedMsg = ""
-                    upper_c = False
-                    for c in message:
-                        if c.isalpha():
-                            if c.isupper():
-                                upper_c = True
-                                c = c.lower()
-                            num = letters_nums_mapping[c] # TODO split here for affineEncodeDecode
-
-                            num = (a * num + b) % m
-
-                            # TODO split here for affineEncodeDecode
-                            # get new encrypted char by looking up letter of new num
-                            c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
-                            if upper_c == True:
-                                c = c.upper()
-                                upper_c = False
-                        encryptedMsg += c
-                except:
-                    print("The number must be a positive integer. ")
-                    b = -1
-        except:
-            print("The number must not have any common factors with 26 other than 1. ")
-            a = -1
-    return encryptedMsg
-
-
 def getModInverse(a, mod):
     for i in range(1, mod):
         if (((a % mod) * (i % mod)) % mod == 1):
             return i
-
 
 
 def affineEncodeDecode(message, mode):
@@ -166,42 +124,6 @@ def affineEncodeDecode(message, mode):
             print("The number must not have any common factors with 26 other than 1. ")
             a = -1
     return msg
-
-
-def affineDecode(message):
-    # retrieve a and b from user
-    m = 26
-    a = -1
-    b = -1
-    while not (a >= 1):
-        try:
-            a = int(input("a: Input the positive integer coprime to 26 used to encode the message. "))
-            while not(isCoprime(a)):
-                a = int(input("'a' must be coprime to 26. "))
-            while not(b >= 1):
-                try:
-                    b = int(input("b: Input the intercept value used to encode the message. "))
-                    decryptedMsg = ""
-                    upper_c = False
-                    for c in message:
-                        if c.isalpha():
-                            if c.isupper():
-                                upper_c = True
-                                c = c.lower()
-                            num = letters_nums_mapping[c]
-                            num = getModInverse(a, m) * (num - b) % m
-                            c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
-                            if upper_c == True:
-                                c = c.upper()
-                                upper_c = False
-                        decryptedMsg += c
-                except:
-                    print("The number must be a positive integer ")
-                    b = -1 
-        except: 
-            print("The number must not have any common factors with 26 other than 1. ")
-            a = -1
-    return decryptedMsg
 
 
 def getKey():
