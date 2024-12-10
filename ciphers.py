@@ -99,8 +99,11 @@ def affineEncode(message):
                             if c.isupper():
                                 upper_c = True
                                 c = c.lower()
-                            num = letters_nums_mapping[c]
+                            num = letters_nums_mapping[c] # TODO split here for affineEncodeDecode
+
                             num = (a * num + b) % m
+
+                            # TODO split here for affineEncodeDecode
                             # get new encrypted char by looking up letter of new num
                             c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
                             if upper_c == True:
@@ -120,6 +123,49 @@ def getModInverse(a, mod):
     for i in range(1, mod):
         if (((a % mod) * (i % mod)) % mod == 1):
             return i
+
+
+
+def affineEncodeDecode(message, mode):
+    m = 26 # size of the alphabet
+    a = - 1 # coprime to the alphabet
+    b = -1 # intercept
+
+    while not (a >= 1):
+        try:
+            a = int(input("a: Input a positive integer that is coprime to 26. "))
+            while not(isCoprime(a)):
+                a = int(input("'a' must be coprime to 26. "))
+            while not(b >= 1):
+                try:
+                    b = int(input("b: Input the intercept value for the message. ")) 
+                    msg = ""
+                    upper_c = False
+                    for c in message:
+                        if c.isalpha():
+                            if c.isupper():
+                                upper_c = True
+                                c = c.lower()
+                            num = letters_nums_mapping[c]
+                            # Mode 1: Encode
+                            if mode == 1:
+                                num = (a * num + b) % m
+                            # Mode 2: Decode
+                            elif mode == 2:
+                                num = getModInverse(a, m) * (num - b) % m
+                            # get new encrypted char by looking up letter of new num
+                            c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
+                            if upper_c == True:
+                                c = c.upper()
+                                upper_c = False
+                        msg += c
+                except:
+                    print("The number must be a positive integer ")
+                    b = -1 
+        except: 
+            print("The number must not have any common factors with 26 other than 1. ")
+            a = -1
+    return msg
 
 
 def affineDecode(message):

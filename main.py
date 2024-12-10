@@ -26,19 +26,16 @@ def switch_menu(user_input):
 
     # Atbash cipher
     if user_input == 1:
-            print(ciphers.atbashEncode(message))
+        print(ciphers.atbashEncode(message))
 
     # Caesar cipher
     elif user_input == 2:
-            print(ciphers.caesarEncodeDecode(message, mode))
+        print(ciphers.caesarEncodeDecode(message, mode))
         
     # Affine cipher
     elif user_input == 3:
-        if mode == 1:
-            print(ciphers.affineEncode(message))
-        else:
-            print(ciphers.affineDecode(message))
-    
+        print(ciphers.affineEncodeDecode(message, mode))
+
     # Viginere cipher
     elif user_input == 4:
         if mode == 1:
