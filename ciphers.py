@@ -46,9 +46,7 @@ def caesarEncode(message):
                         if (ascii_num > 90):
                             ascii_num = ascii_num % 90 + 65 -1
                     c = chr(ascii_num)
-                    encryptedMsg += c 
-                else:
-                    encryptedMsg += c
+                encryptedMsg += c
             return encryptedMsg
         except:
             print("Shift must be an integer greater than 0. ")
@@ -72,9 +70,7 @@ def caesarDecode(message):
                         if (ascii_num < 65):
                             ascii_num = 90 - 65 % ascii_num + 1
                     c = chr(ascii_num)
-                    decryptedMsg += c 
-                else:
-                    decryptedMsg += c
+                decryptedMsg += c
             return decryptedMsg
         except:
             print("Shift must be an integer greater than 0. ")
@@ -121,12 +117,9 @@ def affineEncode(message):
                             # get new encrypted char by looking up letter of new num
                             c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
                             if upper_c == True:
-                                encryptedMsg += c.upper()
+                                c = c.upper()
                                 upper_c = False
-                            else:
-                                encryptedMsg += c
-                        else:
-                            encryptedMsg += c
+                        encryptedMsg += c
                 except:
                     print("The number must be a positive integer. ")
                     b = -1
@@ -166,12 +159,9 @@ def affineDecode(message):
                             num = getModInverse(a, m) * (num - b) % m
                             c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
                             if upper_c == True:
-                                decryptedMsg += c.upper()
+                                c = c.upper()
                                 upper_c = False
-                            else:
-                                decryptedMsg += c
-                        else:
-                            decryptedMsg += c
+                        decryptedMsg += c
                 except:
                     print("The number must be a positive integer ")
                     b = -1 
@@ -213,12 +203,9 @@ def viginereEncode(message):
             if c_ptr > len(key) - 1:
                 c_ptr = 0
             if upper_c == True:
-                encryptedMsg += c.upper()
+                c = c.upper()
                 upper_c = False
-            else:
-                encryptedMsg += c
-        else:
-            encryptedMsg += c
+        encryptedMsg += c
     return encryptedMsg
 
 
@@ -243,10 +230,7 @@ def viginereDecode(message):
             if c_ptr > len(key) - 1:
                 c_ptr = 0
             if upper_c == True:
-                decryptedMsg += c.upper()
+                c = c.upper()
                 upper_c = False
-            else:
-                decryptedMsg += c
-        else:
-            decryptedMsg += c
+        decryptedMsg += c
     return decryptedMsg
