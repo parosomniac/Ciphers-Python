@@ -149,7 +149,7 @@ def affineDecode(message):
     b = -1
     while not (a >= 1):
         try:
-            a = int(input("a: Input the positive integer coprime to 26 used to encode the message"))
+            a = int(input("a: Input the positive integer coprime to 26 used to encode the message. "))
             while not(isCoprime(a)):
                 a = int(input("'a' must be coprime to 26. "))
             while not(b >= 1):

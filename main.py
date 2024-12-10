@@ -22,7 +22,7 @@ def switch_menu(user_input):
         return
     
     mode = switch_mode()
-    message = input("Enter your message. ")
+    message = input("Enter your message: ")
 
     # Atbash cipher
     if user_input == 1:
@@ -49,12 +49,13 @@ def switch_menu(user_input):
         else:
             print(ciphers.viginereDecode(message))
 
+
 def main():
     user_input = 0
 
     while not (user_input) == -1:
         try:
-            user_input = int(input("Select from the cipher options below or enter -1 to quit.\n"
+            user_input = int(input("\nSelect from the cipher options below or enter -1 to quit.\n"
                             + "1) Atbash Cipher\n" + 
                             "2) Caesar cipher\n" +
                             "3) Affine cipher\n" + 
@@ -64,7 +65,7 @@ def main():
             switch_menu(user_input)
 
         except:
-            print('Please enter an integer from the menu options given.')
+            print('Please enter an integer from the menu options given. ')
 
     print("Program ended.")
 
