@@ -28,6 +28,8 @@
 * refactor code
 * Caesar, Affine, Viginere - combine functions of encode and decode
     * add mode as parameter
+* write tests 
+https://stackoverflow.com/questions/3371255/writing-unit-tests-in-python-how-do-i-start 
 
 ## FUTURE ADDITIONS
 * graphical user interface
