@@ -30,7 +30,7 @@ def atbashEncodeDecode(message):
 
 def caesarEncodeDecode(message, mode):
     shift = 0
-    while not (shift > 0):
+    while not (shift > 0): # shift of 0 is same char
         try:
             shift = int(input("How much is the shift for the cipher? "))
             shift %= 26 
@@ -105,10 +105,8 @@ def affineEncodeDecode(message, mode):
                                 upper_c = True
                                 c = c.lower()
                             num = letters_nums_mapping[c]
-                            # Mode 1: Encode
                             if mode == 1:
                                 num = (a * num + b) % m
-                            # Mode 2: Decode
                             elif mode == 2:
                                 num = getModInverse(a, m) * (num - b) % m
                             # get new encrypted char by looking up letter of new num
