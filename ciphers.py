@@ -28,50 +28,37 @@ def atbashEncode(message):
     return res
 
 
-def caesarEncode(message):
+def caesarEncodeDecode(message, mode):
     shift = 0
     while not (shift > 0):
         try:
             shift = int(input("How much is the shift for the cipher? "))
             shift %= 26 
-            encryptedMsg = ''
+            msg = ''
             for c in message:
                 if c.isalpha():
                     ascii_num = ord(c)
-                    ascii_num += shift
-                    if c.islower():
-                        if (ascii_num > 122):
-                            ascii_num = ascii_num % 122 + 97 - 1
-                    else:
-                        if (ascii_num > 90):
-                            ascii_num = ascii_num % 90 + 65 -1
+                    # Mode 1: Encode
+                    if mode == 1:
+                        ascii_num += shift
+                        if c.islower():
+                            if (ascii_num > 122):
+                                ascii_num = ascii_num % 122 + 97 - 1
+                        else:
+                            if (ascii_num > 90):
+                                ascii_num = ascii_num % 90 + 65 - 1
+                    # Mode 2: Decode
+                    elif mode == 2:
+                        ascii_num -= shift
+                        if c.islower():
+                            if (ascii_num < 97):
+                                ascii_num = 122 - 97 % ascii_num + 1
+                        else:
+                            if (ascii_num < 65):
+                                ascii_num = 90 - 65 % ascii_num + 1
                     c = chr(ascii_num)
-                encryptedMsg += c
-            return encryptedMsg
-        except:
-            print("Shift must be an integer greater than 0. ")
-
-
-def caesarDecode(message):
-    shift = 0
-    while not (shift > 0):
-        try:
-            shift = int(input("How much is the shift for the cipher? "))
-            shift %= 26
-            decryptedMsg = ''
-            for c in message:
-                if c.isalpha():
-                    ascii_num = ord(c)
-                    ascii_num -= shift
-                    if c.islower():
-                        if (ascii_num < 97):
-                            ascii_num = 122 - 97 % ascii_num + 1
-                    else:
-                        if (ascii_num < 65):
-                            ascii_num = 90 - 65 % ascii_num + 1
-                    c = chr(ascii_num)
-                decryptedMsg += c
-            return decryptedMsg
+                msg += c
+            return msg
         except:
             print("Shift must be an integer greater than 0. ")
 

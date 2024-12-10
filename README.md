@@ -24,6 +24,11 @@
 * E(x) = (x + k) mod 26
 * D(x) = (x - k) mod 26
 
+## TODO
+* refactor code
+* Caesar, Affine, Viginere - combine functions of encode and decode
+    * add mode as parameter
+
 ## FUTURE ADDITIONS
 * graphical user interface
 * refactor to reduce repetition of code

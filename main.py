@@ -4,7 +4,7 @@ parosomniac
 24 November 2024
 A program that allows users to 
 encode and decode messages using
-some of the most common ciphers
+4 of the most common ciphers
 '''
 
 import ciphers
@@ -30,11 +30,8 @@ def switch_menu(user_input):
 
     # Caesar cipher
     elif user_input == 2:
-        if mode == 1:
-            print(ciphers.caesarEncode(message))
-        else:
-            print(ciphers.caesarDecode(message))
-    
+            print(ciphers.caesarEncodeDecode(message, mode))
+        
     # Affine cipher
     elif user_input == 3:
         if mode == 1:
