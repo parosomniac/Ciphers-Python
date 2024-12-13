@@ -30,7 +30,7 @@ def switch_menu(user_input):
 
     # Caesar cipher
     elif user_input == 2:
-        print(ciphers.caesarEncodeDecode(message, mode))
+        print(ciphers.caesarEncodeDecode(message, mode, ciphers.getShift()))
         
     # Affine cipher
     elif user_input == 3:
