@@ -139,8 +139,7 @@ def getKey():
     return key
 
 
-def viginereEncodeDecode(message, mode):
-    key = getKey()
+def viginereEncodeDecode(message, mode, key):
     msg = ""
     num = -1
     c_ptr = 0

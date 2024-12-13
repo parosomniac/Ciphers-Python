@@ -39,7 +39,7 @@ def switch_menu(user_input):
     # Viginere cipher
     elif user_input == 4:
        
-        print(ciphers.viginereEncodeDecode(message, mode))
+        print(ciphers.viginereEncodeDecode(message, mode, ciphers.getKey()))
     
 
 def main():
