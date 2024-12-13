@@ -30,5 +30,6 @@ def testAffine():
 
 # Viginere
 def testViginere():
-    pass
+    assert ciphers.viginereEncodeDecode("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !\"#'$%&()[]{}*+=-_,./|:;<>?@^~`", 1, "parosomniac") == "PBTRWTSUQJMAMECHEDFBUXLXPNspoqmfiwiaydazbxqthtljolkm1234567890 !\"#'$%&()[]{}*+=-_,./|:;<>?@^~`"
+    assert ciphers.viginereEncodeDecode("PBTRWTSUQJMAMECHEDFBUXLXPNspoqmfiwiaydazbxqthtljolkm1234567890 !\"#'$%&()[]{}*+=-_,./|:;<>?@^~`", 2, "parosomniac") == "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !\"#'$%&()[]{}*+=-_,./|:;<>?@^~`"
 
