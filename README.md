@@ -24,13 +24,14 @@
 * E(x) = (x + k) mod 26
 * D(x) = (x - k) mod 26
 
-## TODO
-* refactor code
-* Caesar, Affine, Viginere - combine functions of encode and decode
-    * add mode as parameter
-* write tests 
-https://stackoverflow.com/questions/3371255/writing-unit-tests-in-python-how-do-i-start 
+
+## Testing
+* pip install pytest
+* run in terminal with:
+
+```python
+pytest test_ciphers.py
+```
 
 ## FUTURE ADDITIONS
-* graphical user interface
-* refactor to reduce repetition of code
+* (GUI) graphical user interface
