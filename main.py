@@ -12,6 +12,7 @@ import ciphers
 
 def switch_mode():
     user_input = -1
+    
     while not(user_input == '1' or user_input == '2'):
         user_input = input("Would you like to encode(1) " + 
                            "or decode(2) a message? ")
@@ -39,13 +40,11 @@ def switch_menu(user_input):
 
     # Viginere cipher
     elif user_input == 4:
-       
         print(ciphers.viginereEncodeDecode(message, mode, ciphers.getKey()))
     
 
 def main():
     user_input = 0
-
     while not (user_input) == -1:
         try:
             user_input = int(input("\nSelect from the cipher options below or enter -1 to quit.\n"
@@ -54,12 +53,9 @@ def main():
                             "3) Affine cipher\n" + 
                             "4) Viginere cipher\n"
                             "-1) Quit\n"))
-            
             switch_menu(user_input)
-
         except:
             print('Please enter an integer from the menu options given. ')
-
     print("Program ended.")
 
 main()

@@ -112,11 +112,11 @@ def getSlopeIntercept():
 def affineEncodeDecode(message, mode, slope_intercept):
     m = 26 # size of the alphabet
     msg = ""
-    upper_c = False
+    is_upper_c = False
     for c in message:
         if c.isalpha():
             if c.isupper():
-                upper_c = True
+                is_upper_c = True
                 c = c.lower()
             num = letters_nums_mapping[c]
             if mode == 1:
@@ -125,9 +125,9 @@ def affineEncodeDecode(message, mode, slope_intercept):
                 num = getModInverse(slope_intercept[0], m) * (num - slope_intercept[1]) % m
             # get new encrypted char by looking up letter of new num
             c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
-            if upper_c == True:
+            if is_upper_c == True:
                 c = c.upper()
-                upper_c = False
+                is_upper_c = False
         msg += c
     return msg
 
@@ -147,11 +147,11 @@ def viginereEncodeDecode(message, mode, key):
     num = -1
     c_ptr = 0
     m = 26
-    upper_c = False
+    is_upper_c = False
     for c in message:
         if c.isalpha():
             if c.isupper():
-                upper_c = True
+                is_upper_c = True
                 c = c.lower()
             if mode == 1:
                 num = (letters_nums_mapping.get(c) + letters_nums_mapping.get(key[c_ptr])) % m 
@@ -163,8 +163,8 @@ def viginereEncodeDecode(message, mode, key):
             # if ptr now greater than indices of key, reset
             if c_ptr > len(key) - 1:
                 c_ptr = 0
-            if upper_c == True:
+            if is_upper_c == True:
                 c = c.upper()
-                upper_c = False
+                is_upper_c = False
         msg += c
     return msg
