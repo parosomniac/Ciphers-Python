@@ -30,11 +30,8 @@
 * run in terminal with:
 
 ```python
-C:\Users\paro2\AppData\Roaming\Python\Python313\Scripts\pytest.exe test_ciphers.py
+pytest test_ciphers.py
 ```
-
-## TODO 
-* currently pytest not installed in virtual environment - fix
 
 ## FUTURE ADDITIONS
 * (GUI) graphical user interface
