@@ -6,6 +6,7 @@ letters_nums_mapping = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4,
                         'p': 15, 'q': 16, 'r': 17, 's': 18, 't': 19,
                         'u': 20, 'v': 21, 'w': 22, 'x': 23, 'y': 24, 'z': 25}
 
+
 def atbashEncodeDecode(message):
     res = ""
     letter_mapping = {'a': 'z', 'b': 'y', 'c':'x', 'd':'w',
@@ -27,6 +28,7 @@ def atbashEncodeDecode(message):
             res += l
     return res
 
+
 def getShift():
     shift = 0
     while not (shift > 0): # shift of 0 is same char
@@ -36,6 +38,7 @@ def getShift():
         except:
              print("Shift must be an integer greater than 0. ")
     return shift
+
 
 def caesarEncodeDecode(message, mode, shift):
     msg = ""

@@ -5,6 +5,7 @@
 
 import ciphers
 
+
 # Atbash 
 def testAtbash():
     # a -> z
@@ -28,8 +29,10 @@ def testAffine():
     # decode slope 7 intercept 2
     assert ciphers.affineEncodeDecode("CJQXELSZGNUBIPWDKRYFMTAHOVcjqxelszgnubipwdkryfmtahov1234567890 !\"#'$%&()[]{}*+=-_,./|:;<>?@^~`", 2, (7, 2)) == "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !\"#'$%&()[]{}*+=-_,./|:;<>?@^~`"
 
+
 # Viginere
 def testViginere():
+    # key = "parosomniac"
     assert ciphers.viginereEncodeDecode("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !\"#'$%&()[]{}*+=-_,./|:;<>?@^~`", 1, "parosomniac") == "PBTRWTSUQJMAMECHEDFBUXLXPNspoqmfiwiaydazbxqthtljolkm1234567890 !\"#'$%&()[]{}*+=-_,./|:;<>?@^~`"
     assert ciphers.viginereEncodeDecode("PBTRWTSUQJMAMECHEDFBUXLXPNspoqmfiwiaydazbxqthtljolkm1234567890 !\"#'$%&()[]{}*+=-_,./|:;<>?@^~`", 2, "parosomniac") == "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !\"#'$%&()[]{}*+=-_,./|:;<>?@^~`"
 

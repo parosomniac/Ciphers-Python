@@ -9,6 +9,7 @@ encode and decode messages using
 
 import ciphers
 
+
 def switch_mode():
     user_input = -1
     while not(user_input == '1' or user_input == '2'):
