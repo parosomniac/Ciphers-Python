@@ -34,7 +34,7 @@ def switch_menu(user_input):
         
     # Affine cipher
     elif user_input == 3:
-        print(ciphers.affineEncodeDecode(message, mode))
+        print(ciphers.affineEncodeDecode(message, mode, ciphers.getSlopeIntercept()))
 
     # Viginere cipher
     elif user_input == 4:

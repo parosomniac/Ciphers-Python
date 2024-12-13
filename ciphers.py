@@ -38,7 +38,6 @@ def getShift():
     return shift
 
 def caesarEncodeDecode(message, mode, shift):
-    shift = shift
     msg = ""
     for c in message:
         if c.isalpha():
@@ -87,11 +86,9 @@ def getModInverse(a, mod):
             return i
 
 
-def affineEncodeDecode(message, mode):
-    m = 26 # size of the alphabet
+def getSlopeIntercept():
     a = - 1 # coprime to the alphabet
     b = -1 # intercept
-
     while not (a >= 1):
         try:
             a = int(input("a: Input a positive integer that is coprime to 26. "))
@@ -100,30 +97,35 @@ def affineEncodeDecode(message, mode):
             while not(b >= 1):
                 try:
                     b = int(input("b: Input the intercept value for the message. ")) 
-                    msg = ""
-                    upper_c = False
-                    for c in message:
-                        if c.isalpha():
-                            if c.isupper():
-                                upper_c = True
-                                c = c.lower()
-                            num = letters_nums_mapping[c]
-                            if mode == 1:
-                                num = (a * num + b) % m
-                            elif mode == 2:
-                                num = getModInverse(a, m) * (num - b) % m
-                            # get new encrypted char by looking up letter of new num
-                            c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
-                            if upper_c == True:
-                                c = c.upper()
-                                upper_c = False
-                        msg += c
                 except:
                     print("The number must be a positive integer ")
                     b = -1 
-        except: 
+        except:
             print("The number must not have any common factors with 26 other than 1. ")
             a = -1
+    return (a, b)
+
+
+def affineEncodeDecode(message, mode, slope_intercept):
+    m = 26 # size of the alphabet
+    msg = ""
+    upper_c = False
+    for c in message:
+        if c.isalpha():
+            if c.isupper():
+                upper_c = True
+                c = c.lower()
+            num = letters_nums_mapping[c]
+            if mode == 1:
+                num = (slope_intercept[0] * num + slope_intercept[1]) % m
+            elif mode == 2:
+                num = getModInverse(slope_intercept[0], m) * (num - slope_intercept[1]) % m
+            # get new encrypted char by looking up letter of new num
+            c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
+            if upper_c == True:
+                c = c.upper()
+                upper_c = False
+        msg += c
     return msg
 
 
@@ -144,7 +146,6 @@ def viginereEncodeDecode(message, mode):
     c_ptr = 0
     m = 26
     upper_c = False
-
     for c in message:
         if c.isalpha():
             if c.isupper():
