@@ -1,4 +1,4 @@
-# file containing all of the ciphers
+# file containing all the ciphers
 
 letters_nums_mapping = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4,
                         'f': 5, 'g':6, 'h':7, 'i':8, 'j':9,
@@ -33,10 +33,10 @@ def getShift():
     shift = 0
     while not (shift > 0): # shift of 0 is same char
         try:
-            shift = int(input("How much is the shift for the cipher? "))
-            shift %= 26 
+            shift = int(input("How much is the shfit for the cipher? "))
+            shift %= 26 # shift of 27 = 1
         except:
-             print("Shift must be an integer greater than 0. ")
+            print("Shift must be an integer greater than 0. ")
     return shift
 
 
@@ -48,14 +48,14 @@ def caesarEncodeDecode(message, mode, shift):
             # Mode 1: Encode
             if mode == 1:
                 ascii_num += shift
-                if c.islower(): # lowercase
+                if c.islower(): 
                     if (ascii_num > 122):
                         ascii_num = ascii_num % 122 + 97 - 1
                 else:
-                    if (ascii_num > 90): 
+                    if (ascii_num > 90):
                         ascii_num = ascii_num % 90 + 65 - 1
             # Mode 2: Decode
-            elif mode == 2: 
+            elif mode == 2:
                 ascii_num -= shift
                 if c.islower():
                     if (ascii_num < 97):
@@ -65,7 +65,7 @@ def caesarEncodeDecode(message, mode, shift):
                         ascii_num = 90 - (65 % ascii_num) + 1
             c = chr(ascii_num)
         msg += c
-    return msg
+    return msg 
 
 
 # no common factors other than 1
@@ -85,12 +85,12 @@ def isCoprime(num):
 
 def getModInverse(a, mod):
     for i in range(1, mod):
-        if (((a % mod) * (i % mod)) % mod == 1):
+        if ((a % mod) * (i % mod)) % mod == 1:
             return i
-
+        
 
 def getSlopeIntercept():
-    a = - 1 # coprime to the alphabet
+    a = -1 # coprime to the alphabet
     b = -1 # intercept
     while not (a >= 1):
         try:
@@ -99,10 +99,10 @@ def getSlopeIntercept():
                 a = int(input("'a' must be coprime to 26. "))
             while not(b >= 1):
                 try:
-                    b = int(input("b: Input the intercept value for the message. ")) 
+                    b = int(input("b: Input the intercept value for the message. "))
                 except:
-                    print("The number must be a positive integer ")
-                    b = -1 
+                    print("The number must be a positive integer. ")
+                    b = -1
         except:
             print("The number must not have any common factors with 26 other than 1. ")
             a = -1
@@ -139,7 +139,7 @@ def getKey():
             key = input("Input a key for the message. ")
         except:
             print("The key must be a string. ")
-    return key
+    return key 
 
 
 def viginereEncodeDecode(message, mode, key):
@@ -148,6 +148,7 @@ def viginereEncodeDecode(message, mode, key):
     c_ptr = 0
     m = 26
     is_upper_c = False
+
     for c in message:
         if c.isalpha():
             if c.isupper():
@@ -157,10 +158,10 @@ def viginereEncodeDecode(message, mode, key):
                 num = (letters_nums_mapping.get(c) + letters_nums_mapping.get(key[c_ptr])) % m 
             elif mode == 2:
                 num = (letters_nums_mapping.get(c) - letters_nums_mapping.get(key[c_ptr])) % m
-                num = (num + m) % m
+                num = (num + m) % m 
             c = (list(letters_nums_mapping.keys())[list(letters_nums_mapping.values()).index(num)])
             c_ptr += 1
-            # if ptr now greater than indices of key, reset
+            # if ptr is now greater than indices of key, reset
             if c_ptr > len(key) - 1:
                 c_ptr = 0
             if is_upper_c == True:

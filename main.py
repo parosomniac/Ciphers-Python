@@ -7,15 +7,15 @@ encode and decode messages using
 4 of the most common ciphers
 '''
 
-import ciphers
 
+import ciphers
 
 def switch_mode():
     user_input = -1
-    
-    while not(user_input == '1' or user_input == '2'):
-        user_input = input("Would you like to encode(1) " + 
-                           "or decode(2) a message? ")
+
+    while not(user_input == "1" or user_input == "2"):
+        user_input = input("Would you like to encode(1) or " + 
+                           "decode(2) a message?")
     return int(user_input)
 
 
@@ -33,7 +33,7 @@ def switch_menu(user_input):
     # Caesar cipher
     elif user_input == 2:
         print(ciphers.caesarEncodeDecode(message, mode, ciphers.getShift()))
-        
+
     # Affine cipher
     elif user_input == 3:
         print(ciphers.affineEncodeDecode(message, mode, ciphers.getSlopeIntercept()))
@@ -41,7 +41,7 @@ def switch_menu(user_input):
     # Viginere cipher
     elif user_input == 4:
         print(ciphers.viginereEncodeDecode(message, mode, ciphers.getKey()))
-    
+
 
 def main():
     user_input = 0
@@ -55,7 +55,10 @@ def main():
                             "-1) Quit\n"))
             switch_menu(user_input)
         except:
-            print('Please enter an integer from the menu options given. ')
+            print("Please enter an integer from the menu options given. ")
     print("Program ended.")
 
+
 main()
+
+
