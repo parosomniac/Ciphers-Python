@@ -139,7 +139,7 @@ def getKey():
             key = input("Input a key for the message. ")
         except:
             print("The key must be a string. ")
-    return key 
+    return key.lower() 
 
 
 def viginereEncodeDecode(message, mode, key):
